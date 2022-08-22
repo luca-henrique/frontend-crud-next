@@ -1,5 +1,7 @@
+import Button from '../components/Button';
 import Layout from '../components/Layout';
 import Table from '../components/Table';
+import Client from '../core/Client';
 
 const clients = [
   {name: 'Lucas', age: 20, id: '1'},
@@ -9,10 +11,27 @@ const clients = [
 ];
 
 export default function Home() {
+  function selectedClient(client: Client) {
+    console.log(client);
+  }
+
+  function deleteClient(client: Client) {
+    console.log(client);
+  }
+
   return (
     <div className='flex justify-center items-center h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white'>
       <Layout title='Cardastro simples'>
-        <Table clients={clients} />
+        <div className='flex justify-end'>
+          <Button color='green' className='mb-4'>
+            Novo Cliente
+          </Button>
+        </div>
+        <Table
+          clients={clients}
+          selectedClient={selectedClient}
+          deleteClient={deleteClient}
+        />
       </Layout>
     </div>
   );
